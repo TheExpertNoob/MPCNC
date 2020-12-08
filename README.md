@@ -1,9 +1,10 @@
-## Configured for Lowrider2 Dual Endstops on SKR 1.4 Turbo with TMC2209 drivers.
-## Endstops are configured for NO (so you dont have to remove the DIAG pin on the TMC2209)
+### Configured for Lowrider2 Dual Endstops on SKR 1.4 Turbo with TMC2209 drivers.
+### Endstops are configured for NO (so you dont have to remove the DIAG pin on the TMC2209)
 
-## ToDo:
-add laser funstion(probabally enable/disable with Heater 1 and PWM with fan0, not sure yet) and z-probe (probabaly probe).
-default steps per mm needs adjusting.
+### ToDo:
+  - add laser funstion(probabally enable/disable with Heater 1 and PWM with fan0, not sure yet).
+  - add z-probe (probabaly probe).
+  - default steps per mm needs adjusting.
 
 # Marlin 3D Printer Firmware
 
