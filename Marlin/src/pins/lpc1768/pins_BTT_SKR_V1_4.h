@@ -57,12 +57,42 @@
 //
 // Limit Switches
 //
-#define X_MIN_PIN          P1_29
-#define X_MAX_PIN          P1_28
-#define Y_MIN_PIN          P1_27
-#define Y_MAX_PIN          P1_26
-#define Z_MIN_PIN          P1_25
-#define Z_MAX_PIN          P1_24
+#if X_STALL_SENSITIVITY
+  #define X_STOP_PIN                  X_DIAG_PIN
+  #if X_HOME_DIR < 0
+    #define X_MAX_PIN                      P1_26  // E0DET
+  #else
+    #define X_MIN_PIN                      P1_26  // E0DET
+  #endif
+#else
+  #define X_STOP_PIN                       P1_29  // X-STOP
+#endif
+
+#if Y_STALL_SENSITIVITY
+  #define Y_STOP_PIN                  Y_DIAG_PIN
+  #if Y_HOME_DIR < 0
+    #define Y_MAX_PIN                      P1_25  // E1DET
+  #else
+    #define Y_MIN_PIN                      P1_25  // E1DET
+  #endif
+#else
+  #define Y_STOP_PIN                       P1_28  // Y-STOP
+#endif
+
+#if Z_STALL_SENSITIVITY
+  #define Z_STOP_PIN                  Z_DIAG_PIN
+  #if Z_HOME_DIR < 0
+    #define Z_MAX_PIN                      P1_00  // PWRDET
+  #else
+    #define Z_MIN_PIN                      P1_00  // PWRDET
+  #endif
+#else
+  #ifndef Z_STOP_PIN
+    #define Z_STOP_PIN                     P1_27  // Z-STOP
+    #define X_MAX_PIN                      P1_26  // E0DET  added
+    #define Y_MAX_PIN                      P1_25  // E1DET  added
+  #endif
+#endif
 
 //
 // Z Probe (when not Z_MIN_PIN)
@@ -94,47 +124,65 @@
 //
 // Steppers
 //
-#define X_STEP_PIN         P2_02
-#define X_DIR_PIN          P2_06
-#define X_ENABLE_PIN       P2_01
+#define X_STEP_PIN                         P2_02
+#define X_DIR_PIN                          P2_06
+#define X_ENABLE_PIN                       P2_01
 #ifndef X_CS_PIN
-  #define X_CS_PIN         P1_17
+  #define X_CS_PIN                         P1_10
 #endif
 
-#define Y_STEP_PIN         P0_19
-#define Y_DIR_PIN          P0_20
-#define Y_ENABLE_PIN       P2_08
+#define Y_STEP_PIN                         P0_19
+#define Y_DIR_PIN                          P0_20
+#define Y_ENABLE_PIN                       P2_08
 #ifndef Y_CS_PIN
-  #define Y_CS_PIN         P1_15
+  #define Y_CS_PIN                         P1_09
 #endif
 
-#define Z_STEP_PIN         P0_22
-#define Z_DIR_PIN          P2_11
-#define Z_ENABLE_PIN       P0_21
+#define Z_STEP_PIN                         P0_22
+#define Z_DIR_PIN                          P2_11
+#define Z_ENABLE_PIN                       P0_21
 #ifndef Z_CS_PIN
-  #define Z_CS_PIN         P1_10
+  #define Z_CS_PIN                         P1_08
 #endif
 
-#define E0_STEP_PIN        P2_05
-#define E0_DIR_PIN         P2_05
-#define E0_ENABLE_PIN      P2_05
+#define Y2_STEP_PIN                        P2_13
+#define Y2_DIR_PIN                         P0_11
+#define Y2_ENABLE_PIN                      P2_12
+#ifndef Y2_CS_PIN
+  #define Y2_CS_PIN                        P1_04
+#endif
+
+#define Z2_STEP_PIN                        P1_15
+#define Z2_DIR_PIN                         P1_14
+#define Z2_ENABLE_PIN                      P1_16
+#ifndef Z2_CS_PIN
+  #define Z2_CS_PIN                        P1_01
+#endif
+
+//Set Extruder_0 to fan pins if needed
+
+#define E0_STEP_PIN                        P2_05
+#define E0_DIR_PIN                         P2_05
+#define E0_ENABLE_PIN                      P2_05
 #ifndef E0_CS_PIN
-  #define E0_CS_PIN        P2_05
+  #define E0_CS_PIN                        P2_05
 #endif
 
-#define E1_STEP_PIN        P2_13
-#define E1_DIR_PIN         P0_11
-#define E1_ENABLE_PIN      P2_12
-#ifndef E1_CS_PIN
-  #define E1_CS_PIN        P1_04
-#endif
+// Below are origianl pin settings - remove Y2 and Z2
 
-#define E2_STEP_PIN        P1_15
-#define E2_DIR_PIN         P1_14
-#define E2_ENABLE_PIN      P1_16
-#ifndef E2_CS_PIN
-  #define E2_CS_PIN        P1_01
-#endif
+//#define E1_STEP_PIN                        P1_15
+//#define E1_DIR_PIN                         P1_14
+//#define E1_ENABLE_PIN                      P1_16
+//#ifndef E1_CS_PIN
+//  #define E1_CS_PIN                        P1_01
+//#endif
+
+//#define E0_STEP_PIN                        P2_13
+//#define E0_DIR_PIN                         P0_11
+//#define E0_ENABLE_PIN                      P2_12
+//#ifndef E0_CS_PIN
+//  #define E0_CS_PIN                        P1_04
+//#endif
 
 #define TEMP_1_PIN                      P0_23_A0  // A2 (T2) - (69) - TEMP_1_PIN
 #define TEMP_BED_PIN                    P0_25_A2  // A0 (T0) - (67) - TEMP_BED_PIN
@@ -191,13 +239,8 @@
   #define E1_SERIAL_TX_PIN                 P1_01
   #define E1_SERIAL_RX_PIN                 P1_01
 
-  #define X2_SERIAL_TX_PIN                 P1_04
-  #define X2_SERIAL_RX_PIN                 P1_04
-
-  #define Y2_SERIAL_TX_PIN                 P1_01
-  #define Y2_SERIAL_RX_PIN                 P1_01
-
-
+  #define Z2_SERIAL_TX_PIN                 P1_01
+  #define Z2_SERIAL_RX_PIN                 P1_01
 
   // Reduce baud rate to improve software serial reliability
   #define TMC_BAUD_RATE 19200
