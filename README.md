@@ -2,7 +2,7 @@
 ### Endstops are configured for NO (so you dont have to remove the DIAG pin on the TMC2209)
 
 ### ToDo:
-  - add laser funstion(probabally enable/disable with Heater 1 and PWM with fan0, not sure yet).
+  - add laser function(probabally enable/disable with Heater 1 and PWM with fan0, not sure yet).
   - add z-probe (probabaly probe).
   - <s>default steps per mm needs adjusting.</s>
 
