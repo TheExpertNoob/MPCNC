@@ -4,7 +4,7 @@
 ### ToDo:
   - add laser funstion(probabally enable/disable with Heater 1 and PWM with fan0, not sure yet).
   - add z-probe (probabaly probe).
-  - default steps per mm needs adjusting.
+  - <s>default steps per mm needs adjusting.</s>
 
 # Marlin 3D Printer Firmware
 
