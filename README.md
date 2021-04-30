@@ -3,7 +3,7 @@
 
 ### ToDo:
   - <s>add laser function(probabally enable/disable with Heater 1 and PWM with fan0, not sure yet).</s>
-  - Laser is controlled by Heater 1 for (on/off) and variable control with Fan0 (PWM), (those default pins were moved to the unused BED pin. I may still use Heater 0 to control the spindle on/off) NEEDS ACTUAL TESTING
+  - Laser is controlled by Heater 1 for (on/off) and variable control with Fan0 ground(PWM), (those default pins were moved to the unused BED pin. I may still use Heater 0 to control the spindle on/off) NEEDS ACTUAL TESTING
   - add z-probe (probabaly probe P0_10).
   - <s>default steps per mm needs adjusting.</s>
 
