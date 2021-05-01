@@ -83,7 +83,8 @@
   #endif
 #endif
 #ifndef FAN_PIN
-  #define FAN_PIN                          P2_05
+  #define FAN_PIN                          P1_24 // Laser PWM M106 Sxxx (0-255) [Physical Neopixel center pin on the board] [moved from default fan0 pin]
+  #define FAN1_PIN                         P2_03 // Laser Enable M106 P1 [Physical Fan0 connector on the board]
 #endif
 #ifndef HEATER_BED_PIN
   #define HEATER_BED_PIN                   P2_05

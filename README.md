@@ -1,8 +1,8 @@
 ### Configured for Lowrider2 Dual Endstops on SKR 1.4 Turbo with TMC2209 drivers.
 ### Endstops are configured for NO (so you dont have to remove the DIAG pin on the TMC2209)
 ### Laser Function for 12v powered laser with 5v PWM control
- - Laser enable is Fan 0 (P2.3) Use the +12v and GND pins here for the (3-pin power) (This mosfet is rated for 7amps allegedly. Anything more powerful, you may need to use either Heater pins or the Bed Pin)
- - Laser PWM/TTL is +5v pulled from the center Neopixel data pin (P1.24)
+ - Laser enable is Fan0 on the physical board now, virtual Fan 1 FAN1_PIN (P2.03). Enable Laser with M106 P1. Turn off laser completly with M107 P1. You can set this in your post processor.
+ - Laser PWM/TTL is +5v pulled from the center Neopixel data pin (P1.24) now mapped to FAN_PIN in Marlin. (I hope this doesnt confuse anyone) set laser power with M106 Sxxx (0-255)
 
 # Marlin 3D Printer Firmware
 

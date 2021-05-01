@@ -354,7 +354,7 @@
 // Neopixel LED
 //
 #ifndef NEOPIXEL_PIN
-  #define NEOPIXEL_PIN                     P1_24
+  #define NEOPIXEL_PIN                     P2_05 // move neopixel pin P1_24 to bed pin
 #endif
 
 /**
