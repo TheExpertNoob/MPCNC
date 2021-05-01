@@ -1,11 +1,8 @@
 ### Configured for Lowrider2 Dual Endstops on SKR 1.4 Turbo with TMC2209 drivers.
 ### Endstops are configured for NO (so you dont have to remove the DIAG pin on the TMC2209)
-
-### ToDo:
-  - <s>add laser function(probabally enable/disable with Heater 1 and PWM with fan0, not sure yet).</s>
-  - Laser is controlled by Heater 1 for (on/off) and variable control with Fan0 (PWM), (those default pins were moved to the unused BED pin. I may still use Heater 0 to control the spindle on/off) NEEDS ACTUAL TESTING
-  - add z-probe (probabaly probe P0_10).
-  - <s>default steps per mm needs adjusting.</s>
+### Laser Function for 12v powered laser with 5v PWM control
+ - Laser enable is Fan 0 (P2.3) Use the +12v and GND pins here for the (3-pin power) (This mosfet is rated for 7amps allegedly. Anything more powerful, you may need to use either Heater pins or the Bed Pin)
+ - Laser PWM/TTL is +5v pulled from the center Neopixel data pin (P1.24)
 
 # Marlin 3D Printer Firmware
 
